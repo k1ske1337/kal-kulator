@@ -1,160 +1,193 @@
 using System;
 
-class EngineeringCalculator
+public class Addition
 {
-    static void Main(string[] args)
+    public static double Perform(double a, double b)
     {
-        while (true)
-        {
-            Console.WriteLine("Инженерный калькулятор");
-            Console.WriteLine("Выберите операцию:");
-            Console.WriteLine("1. Сложение");
-            Console.WriteLine("2. Вычитание");
-            Console.WriteLine("3. Умножение");
-            Console.WriteLine("4. Деление");
-            Console.WriteLine("5. Возведение в степень");
-            Console.WriteLine("6. Квадратный корень");
-            Console.WriteLine("7. Синус");
-            Console.WriteLine("8. Косинус");
-            Console.WriteLine("9. Тангенс");
-            Console.WriteLine("10. Котангенс");
-            Console.WriteLine("0. main");
-
-            Console.Write("Введите свой выбор: ");
-            int choice = int.Parse(Console.ReadLine());
-
-            double result = 0;
-
-            switch (choice)
-            {
-                case 1:
-                    result = Addition();
-                    break;
-                case 2:
-                    result = Subtraction();
-                    break;
-                case 3:
-                    result = Multiplication();
-                    break;
-                case 4:
-                    result = Division();
-                    break;
-                case 5:
-                    result = Exponentiation();
-                    break;
-                case 6:
-                    result = SquareRoot();
-                    break;
-                case 7:
-                    result = Sine();
-                    break;
-                case 8:
-                    result = Cosine();
-                    break;
-                case 9:
-                    result = Tangent();
-                    break;
-                case 10:
-                    result = Cotangent();
-                    break;
-                case 0:
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Недопустимый выбор!");
-                    continue;
-            }
-
-            Console.WriteLine("Результат: " + result);
-        }
+        return a + b;
     }
-
-    static double Addition()
-    {
-        Console.Write("Введите первое число: ");
-        double num1 = double.Parse(Console.ReadLine());
-        Console.Write("Введите второе число: ");
-        double num2 = double.Parse(Console.ReadLine());
-        return num1 + num2;
-    }
-
-    static double Subtraction()
-    {
-        Console.Write("Введите первое число: ");
-        double num1 = double.Parse(Console.ReadLine());
-        Console.Write("Введите второе число: ");
-        double num2 = double.Parse(Console.ReadLine());
-        return num1 - num2;
-    }
-
-    static double Multiplication()
-    {
-        Console.Write("Введите первое число: ");
-        double num1 = double.Parse(Console.ReadLine());
-        Console.Write("Введите второе число: ");
-        double num2 = double.Parse(Console.ReadLine());
-        return num1 * num2;
-    }
-
-    static double Division()
-    {
-        Console.Write("Введите делимое: ");
-        double dividend = double.Parse(Console.ReadLine());
-        Console.Write("Введите делитель: ");
-        double divisor = double.Parse(Console.ReadLine());
-
-        if (divisor == 0)
-        {
-            Console.WriteLine("Нельзя делить на ноль!");
-            return double.NaN;
-        }
-
-        return dividend / divisor;
-    }
-
-    static double Exponentiation()
-    {
-        Console.Write("Введите число: ");
-        double @base = double.Parse(Console.ReadLine());
-        Console.Write("Введите степень: ");
-        double exponent = double.Parse(Console.ReadLine());
-        return Math.Pow(@base, exponent);
-    }
-
-    static double SquareRoot()
-    {
-        Console.Write("Введите число: ");
-        double number = double.Parse(Console.ReadLine());
-        return Math.Sqrt(number);
-    }
-
-    static double Sine()
-    {
-        Console.Write("Введите угол в градусах: ");
-        double angle = double.Parse(Console.ReadLine());
-        return Math.Sin(angle * Math.PI / 180.0);
-    }
-
-    static double Cosine()
-    {
-        Console.Write("Введите угол в градусах: ");
-        double angle = double.Parse(Console.ReadLine());
-        return Math.Cos(angle * Math.PI / 180.0);
-    }
-
-    static double Tangent()
-    {
-        Console.Write("Введите угол в градусах: ");
-        double angle = double.Parse(Console.ReadLine());
-        return Math.Tan(angle * Math.PI / 180.0);
-    }
-
-    static double Cotangent()
-    {
-        Console.Write("Введите угол в градусах: ");
-        double angle = double.Parse(Console.ReadLine());
-        return 1.0 / Math.Tan(angle * Math.PI / 180.0);
-    }
-
 }
 
+public class Subtraction
+{
+    public static double Perform(double a, double b)
+    {
+        return a - b;
+    }
+}
+
+public class Multiplication
+{
+    public static double Perform(double a, double b)
+    {
+        return a * b;
+    }
+}
+
+public class Division
+{
+    public static double Perform(double a, double b)
+    {
+        if (b == 0)
+        {
+            Console.WriteLine("Нельзя делить на ноль!");
+            return double.NaN; 
+        }
+        else
+        {
+            return a / b;
+        }
+    }
+}
+
+public class Trigonometry
+{
+    public static double Sine(double angle)
+    {
+        return Math.Sin(Math.PI * angle / 180.0);
+    }
+
+    public static double Cosine(double angle)
+    {
+        return Math.Cos(Math.PI * angle / 180.0);
+    }
+
+    public static double Tangent(double angle)
+    {
+        return Math.Tan(Math.PI * angle / 180.0);
+    }
+
+    public static double Cotangent(double angle)
+    {
+        return 1.0 / Math.Tan(Math.PI * angle / 180.0);
+    }
+}
+
+public class Exponentiation
+{
+    public static double Perform(double baseNumber, double exponent)
+    {
+        return Math.Pow(baseNumber, exponent);
+    }
+}
+
+public class SquareRoot
+{
+    public static double Perform(double number)
+    {
+        if (number < 0)
+        {
+            Console.WriteLine("Невозможно вычислить квадратный корень из отрицательного числа!");
+            return double.NaN; 
+        }
+        else
+        {
+            return Math.Sqrt(number);
+        }
+    }
+}
+
+public class EngineeringCalculator
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Добро пожаловать в Инженерный калькулятор!");
+        Console.WriteLine("Выберите операцию:");
+        Console.WriteLine("1. Сложение");
+        Console.WriteLine("2. Вычитание");
+        Console.WriteLine("3. Умножение");
+        Console.WriteLine("4. Деление");
+        Console.WriteLine("5. Синус");
+        Console.WriteLine("6. Косинус");
+        Console.WriteLine("7. Тангенс");
+        Console.WriteLine("8. Котангенс");
+        Console.WriteLine("9. Возведение в степень");
+        Console.WriteLine("10. Квадратный корень");
+        Console.WriteLine("0. Exit");
+
+        while (true)
+        {
+            Console.Write("\nВведите свой выбор (0-10): ");
+            string choice = Console.ReadLine();
+
+            if (choice == "0")
+            {
+                Console.WriteLine("Выход из калькулятора. Гудбай Америка!");
+                break;
+            }
+            else if (choice == "1" || choice == "2" || choice == "3" || choice == "4" || choice == "9" || choice == "10")
+            {
+                try
+                {
+                    Console.Write("Введите первое число: ");
+                    double num1 = Convert.ToDouble(Console.ReadLine());
+
+                    if (choice != "10")
+                    {
+                        Console.Write("Введите второе число: ");
+                        double num2 = Convert.ToDouble(Console.ReadLine());
+
+                        switch (choice)
+                        {
+                            case "1":
+                                Console.WriteLine("Результат: " + Addition.Perform(num1, num2));
+                                break;
+                            case "2":
+                                Console.WriteLine("Результат: " + Subtraction.Perform(num1, num2));
+                                break;
+                            case "3":
+                                Console.WriteLine("Результат: " + Multiplication.Perform(num1, num2));
+                                break;
+                            case "4":
+                                Console.WriteLine("Результат: " + Division.Perform(num1, num2));
+                                break;
+                            case "9":
+                                Console.WriteLine("Результат: " + Exponentiation.Perform(num1, num2));
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Результат: " + SquareRoot.Perform(num1));
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Пожалуйста, введите действительные числа!");
+                }
+            }
+            else if (choice == "5" || choice == "6" || choice == "7" || choice == "8")
+            {
+                try
+                {
+                    Console.Write("Введите угол в градусах: ");
+                    double angle = Convert.ToDouble(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case "5":
+                            Console.WriteLine("Результат: " + Trigonometry.Sine(angle));
+                            break;
+                        case "6":
+                            Console.WriteLine("Результат: " + Trigonometry.Cosine(angle));
+                            break;
+                        case "7":
+                            Console.WriteLine("Результат: " + Trigonometry.Tangent(angle));
+                            break;
+                        case "8":
+                            Console.WriteLine("Результат: " + Trigonometry.Cotangent(angle));
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Пожалуйста, введите допустимый угол!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный выбор! Пожалуйста, выберите еще раз.");
+            }
+        }
+    }
+}
